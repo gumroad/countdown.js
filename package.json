@@ -1,5 +1,8 @@
 {
   "devDependencies" : {
-    "jake" : "latest"
+      "jake" : "latest"
+    , "mocha" : "latest"
+    , "jquery" : "*"
+    , "sinon" : "*"
   }
 }
