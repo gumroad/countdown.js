@@ -1,6 +1,7 @@
 var assert = require("assert")
   , $ = require("jquery")
-  , sinon = require('sinon');
+  , sinon = require('sinon')
+  , clock;
 
   global.jQuery = $;
 
@@ -8,11 +9,11 @@ require("../lib/jquery.countdown");
 
 describe("jquery.countdown", function() {
   beforeEach(function() {
-    this.clock = sinon.useFakeTimers();
+    clock = sinon.useFakeTimers();
   });
 
   afterEach(function() {
-    this.clock.restore();
+    clock.restore();
   });
 
   describe("$.countdown", function() {
@@ -22,11 +23,11 @@ describe("jquery.countdown", function() {
 
       $.countdown(5, spy1, spy2);
       assert(spy1.callCount == 1);
-      this.clock.tick(1000);
+      clock.tick(1000);
       assert(spy1.callCount == 2);
-      this.clock.tick(1000);
+      clock.tick(1000);
       assert(spy1.callCount == 3);
-      this.clock.tick(1000);
+      clock.tick(1000);
       assert(spy1.callCount == 4);
     });
 
@@ -35,7 +36,7 @@ describe("jquery.countdown", function() {
         , spy2 = sinon.spy();
 
       $.countdown(5, spy1, spy2);
-      this.clock.tick(5000);
+      clock.tick(5000);
       assert(spy2.callCount == 1);
     });
   });
@@ -48,12 +49,12 @@ describe("jquery.countdown", function() {
       var countdown = $.countdown(5, spy1, spy2);
 
       assert(spy1.callCount == 1);
-      this.clock.tick(1000);
+      clock.tick(1000);
       assert(spy1.callCount == 2);
       countdown.abort();
-      this.clock.tick(1000);
+      clock.tick(1000);
       assert(spy1.callCount == 2);
-      this.clock.tick(3000);
+      clock.tick(3000);
       assert(spy2.callCount == 0);
     });
   });
