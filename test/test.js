@@ -16,14 +16,6 @@ describe("jquery.countdown", function() {
   });
 
   describe("$.countdown", function() {
-    beforeEach(function() {
-      this.clock = sinon.useFakeTimers();
-    });
-
-    afterEach(function() {
-      this.clock.restore();
-    });
-
     it("executes onTick while countdown is running", function() {
       var spy1 = sinon.spy()
         , spy2 = sinon.spy();
