@@ -16,7 +16,7 @@ stops the countdown.
 Example:
 
 ```javascript
-submitCountdown = $.countdown(5, function(seconds) {
+var submitCountdown = $.countdown(5, function(seconds) {
   console.log(seconds); //log the number of seconds that have passed
 }, function() {
    console.log("Countdown complete!") //log that the countdown has complete
