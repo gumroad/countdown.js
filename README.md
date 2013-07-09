@@ -23,6 +23,7 @@ submitCountdown = $.countdown(5, function(seconds) {
 });
 
 submitCountdown.abort(); //aborts the countdown
+```
 
 ### Contribute
 
