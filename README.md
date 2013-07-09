@@ -5,7 +5,7 @@ action to be confirmed will happen after a provided number of time unless the us
 
 ## API
 
-### $.countdown(duration, onTick, onComplete)
+### Countdown.start(duration, onTick, onComplete)
 
 Begins a countdown.  After `duration` time has passed, the function `onComplete `will be executed.  Every second, the `onTick`
 function will be executed.  
@@ -16,7 +16,7 @@ stops the countdown.
 Example:
 
 ```javascript
-var submitCountdown = $.countdown(5, function(seconds) {
+var submitCountdown = Countdown.start(5, function(seconds) {
   console.log(seconds); //log the number of seconds that have passed
 }, function() {
    console.log("Countdown complete!") //log that the countdown has complete
