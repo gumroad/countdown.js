@@ -1,6 +1,6 @@
 # countdown.js
 
-countdown.js is a library that allows developers to replace confirmation modals with countdowns.  For example, if you would
+Countdown.js is a library that allows developers to set countdowns for functions that can be cancelled.  For example, if you would
 like to submit a form, countdown.js allows you to set a 5 second countdown and give the user a chance to cancel the
 submission. 
 
