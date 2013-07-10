@@ -1,22 +1,22 @@
-# jQuery.countdown
+# countdown.js
 
-Remove confirmation modals from your site! jQuery.countdown replaces confirmation modals with a UI interaction in which the
-action to be confirmed will happen after a provided number of time unless the user chooses to abort that operation.  
+countdown.js is a library that allows developers to replace confirmation modals with countdowns.  For example, if you would
+like to submit a form, countdown.js allows you to set a 5 second countdown and give the user a chance to cancel the
+submission. 
 
 ## API
 
-### Countdown.start(duration, onTick, onComplete)
+### new Countdown(duration, onTick, onComplete)
 
 Begins a countdown.  After `duration` time has passed, the function `onComplete `will be executed.  Every second, the `onTick`
 function will be executed.  
 
-The function returns an object with which the countdown can be controlled.  This object has a method called `abort` that
-stops the countdown.  
+Countdown objects have an `abort` method with which the countdown can be stopped.  
 
 Example:
 
 ```javascript
-var submitCountdown = Countdown.start(5, function(seconds) {
+var submitCountdown = new Countdown(5, function(seconds) {
   console.log(seconds); //log the number of seconds that have passed
 }, function() {
    console.log("Countdown complete!") //log that the countdown has complete
