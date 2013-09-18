@@ -27,9 +27,9 @@ describe("countdown.js", function() {
       assert(tickFunction.callCount == 3);
       clock.tick(1000);
       assert(tickFunction.callCount == 4);
-      clock.tick(1000)
+      clock.tick(1000);
       assert(tickFunction.callCount == 5);
-      clock.tick(1000)
+      clock.tick(1000);
       assert(tickFunction.callCount == 5);
     });
 
@@ -41,7 +41,7 @@ describe("countdown.js", function() {
       assert(callbackFunction.callCount == 1);
     });
   });
-  
+
   describe("aborting countdown", function() {
     var countdown;
 
@@ -57,11 +57,29 @@ describe("countdown.js", function() {
       clock.tick(1000);
       assert(tickFunction.callCount == 2);
     });
-    
+
     it("does not call onComplete", function() {
-      countdown.abort(); 
+      countdown.abort();
       clock.tick(5000);
       assert(callbackFunction.callCount == 0);
+    });
+  });
+
+  describe("getRemainingTime", function() {
+    var countdown;
+
+    beforeEach(function() {
+      this.countdown = new Countdown(5, tickFunction, callbackFunction);
+    });
+
+    it("calls returns the correct getRemainingTime immediately on the next tick", function() {
+      assert(this.countdown.getRemainingTime() === 4);
+    });
+
+    it("calls returns the correct getRemainingTime on a clock tick tick", function() {
+      assert(this.countdown.getRemainingTime() === 4);
+      clock.tick(1000);
+      assert(this.countdown.getRemainingTime() === 3);
     });
   });
 });
