@@ -2,7 +2,8 @@ var assert = require("assert")
   , sinon = require('sinon')
   , clock
   , tickFunction
-  , callbackFunction;
+  , callbackFunction
+  , abortFunction;
 
 Countdown = require("../lib/countdown");
 
@@ -11,6 +12,7 @@ describe("countdown.js", function() {
     clock = sinon.useFakeTimers();
     tickFunction = sinon.spy();
     callbackFunction = sinon.spy();
+    abortFunction = sinon.spy();
   });
 
   afterEach(function() {
@@ -27,9 +29,9 @@ describe("countdown.js", function() {
       assert(tickFunction.callCount == 3);
       clock.tick(1000);
       assert(tickFunction.callCount == 4);
-      clock.tick(1000)
+      clock.tick(1000);
       assert(tickFunction.callCount == 5);
-      clock.tick(1000)
+      clock.tick(1000);
       assert(tickFunction.callCount == 5);
     });
 
@@ -41,12 +43,12 @@ describe("countdown.js", function() {
       assert(callbackFunction.callCount == 1);
     });
   });
-  
+
   describe("aborting countdown", function() {
     var countdown;
 
     beforeEach(function() {
-      countdown = new Countdown(5, tickFunction, callbackFunction);
+      countdown = new Countdown(5, tickFunction, callbackFunction, abortFunction);
     });
 
     it("calls onTick the correct number of times", function() {
@@ -57,11 +59,17 @@ describe("countdown.js", function() {
       clock.tick(1000);
       assert(tickFunction.callCount == 2);
     });
-    
+
     it("does not call onComplete", function() {
-      countdown.abort(); 
+      countdown.abort();
       clock.tick(5000);
       assert(callbackFunction.callCount == 0);
+    });
+
+    it("calls onAbort after aborting", function() {
+      countdown.abort();
+      //clock.tick(5000);
+      assert(abortFunction.callCount === 1);
     });
   });
 });
