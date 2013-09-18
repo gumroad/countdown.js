@@ -1,6 +1,6 @@
 {
   "name": "countdown.js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "lib/countdown.js",
   "scripts": {
     "test": "jake test"
