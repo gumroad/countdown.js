@@ -1,7 +1,7 @@
-# countdown.js
+# Countdown.js
 
 Countdown.js is a library that allows developers to set countdowns for any kind of interaction.  For example, if you would
-like to submit a form, countdown.js allows you to set a 5 second countdown and give the user a chance to cancel the
+like to submit a form, Countdown.js allows you to set a 5 second countdown and give the user a chance to cancel the
 submission. 
 
 ## API
