@@ -40,6 +40,28 @@ describe("countdown.js", function() {
       clock.tick(5000);
       assert(callbackFunction.callCount == 1);
     });
+
+    it("executes onComplete at 2 ticks for 2.4", function() {
+      new Countdown(2.4, tickFunction, callbackFunction);
+      clock.tick(1000);
+      assert(callbackFunction.callCount == 0);
+      clock.tick(1000);
+      assert(callbackFunction.callCount == 1);
+      // Ensure this is Math.round behavior
+      clock.tick(1000);
+      assert(callbackFunction.callCount == 1);
+    });
+
+    it("executes onComplete at 3 ticks for 2.5", function() {
+      new Countdown(2.5, tickFunction, callbackFunction);
+      clock.tick(1000);
+      assert(callbackFunction.callCount == 0);
+      clock.tick(1000);
+      assert(callbackFunction.callCount == 0);
+      // Ensure this is Math.round behavior
+      clock.tick(1000);
+      assert(callbackFunction.callCount == 1);
+    });
   });
 
   describe("aborting countdown", function() {
