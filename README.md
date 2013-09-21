@@ -5,6 +5,15 @@ Countdown.js is a library that allows developers to set countdowns for any kind 
 like to submit a form, Countdown.js allows you to set a 5 second countdown and give the user a chance to cancel the
 submission. You can see it in action [here](http://gumroad.github.io/countdown.js/).
 
+## Installation
+
+If you use bower:
+```
+bower install countdown.js
+```
+
+Otherwise, you can download it from [here](https://raw.github.com/gumroad/countdown.js/master/lib/countdown.js).
+
 ## API
 
 ### new Countdown(duration, onTick, onComplete)
